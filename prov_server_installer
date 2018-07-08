@@ -8,6 +8,19 @@ yum install -y iptables-services
 systemctl enable iptables 
 systemctl start iptables 
 
+#配置规则
+iptables -I INPUT -p tcp --dport 10000:30000 -m connlimit --connlimit-above 3 -j DROP
+iptables -I OUTPUT -p tcp --dport 10000:30000 -m connlimit --connlimit-above 3 -j DROP
+iptables -I INPUT -p udp --dport 10000:30000 -m connlimit --connlimit-above 3 -j DROP
+iptables -I OUTPUT -p udp --dport 10000:30000 -m connlimit --connlimit-above 3 -j DROP
+iptables -A OUTPUT -p tcp --sport 10000:30000 -m limit --limit 200/s -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 10000:30000 -j DROP
+iptables -A OUTPUT -p udp --sport 10000:30000 -m limit --limit 200/s -j ACCEPT
+iptables -A OUTPUT -p udp --sport 10000:30000 -j DROP
+service iptables save
+systemctl restart iptables 
+
+
 #安装v2
 bash <(curl -L -s https://install.direct/go.sh)
 
