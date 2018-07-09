@@ -21,6 +21,22 @@
         }
     },
     "inbound": {
+        "port": 8002,
+        "protocol": "vmess",
+        "settings": {
+            "clients": [
+                {
+                    "alterId": 64,
+                    "email": "123@gmail.com",
+                    "id": "e731f153-4f31-49d3-9e8f-ff8f396135ef",
+                    "level": 0
+                }
+            ],
+            "disableInsecureEncryption": true
+        },
+        "streamSettings": {
+            "network": "tcp"
+        }
     },
     "inboundDetour": [
         {
