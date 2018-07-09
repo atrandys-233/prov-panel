@@ -21,25 +21,14 @@
         }
     },
     "inbound": {
-        "port": 18002,
-        "protocol": "vmess",
-        "tag":"adduser",
-        "settings": {
-            "clients": [
-            ],
-            "disableInsecureEncryption": true
-        },
-        "streamSettings": {
-            "network": "tcp"
-        }
     },
     "inboundDetour": [
         {
-            "listen": "67.218.148.65",
+            "listen": "127.0.0.1",
             "port": 10085,
             "protocol": "dokodemo-door",
             "settings": {
-                "address": "67.218.148.65"
+                "address": "127.0.0.1"
             },
             "tag": "api"
         }
